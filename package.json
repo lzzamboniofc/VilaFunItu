@@ -1,0 +1,23 @@
+{
+  "name": "villa-fun-itu",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site do Villa Fun Itu — buffet infantil para festas intimistas com gastronomia afetiva.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:demo": "node scripts/build.mjs --modo=demonstracao",
+    "build:publico": "node scripts/build.mjs --modo=publico",
+    "dev": "node scripts/build.mjs --watch & node scripts/serve.mjs",
+    "serve": "node scripts/serve.mjs",
+    "pendencias": "node scripts/pendencias.mjs",
+    "marca": "node scripts/gerar-marca.mjs"
+  },
+  "optionalDependencies": {
+    "esbuild": "^0.25.0",
+    "sharp": "^0.34.0"
+  }
+}

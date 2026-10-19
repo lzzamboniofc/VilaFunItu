@@ -1,0 +1,81 @@
+/* ============================================================
+   TOKENS — troque as cores da marca aqui.
+   Paleta provisória: "leite de morango, ameixa, pistache e manteiga",
+   inspirada em festa infantil + gastronomia afetiva. Substitua pelas
+   cores oficiais quando o Villa Fun enviar o manual/logotipo.
+   ============================================================ */
+
+@font-face {
+  font-family: 'Lora';
+  src: url('../fonts/lora-variable.woff') format('woff');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Lora';
+  src: url('../fonts/lora-italic-variable.woff') format('woff');
+  font-weight: 400 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/inter-regular.woff') format('woff');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/inter-medium.woff') format('woff');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('../fonts/inter-semibold.woff') format('woff');
+  font-weight: 600;
+  font-display: swap;
+}
+
+:root {
+  /* Cores base */
+  --leite: #fff5f2;          /* fundo principal */
+  --leite-2: #fbe4de;        /* fundo alternado */
+  --ameixa: #3b1f3a;         /* texto e seções escuras */
+  --ameixa-2: #5e3f5b;       /* texto secundário */
+  --morango: #e0485f;        /* destaque decorativo */
+  --morango-texto: #b3263f;  /* destaque em texto (contraste AA) */
+  --pistache: #e1edd5;       /* fundo de serviços */
+  --pistache-forte: #2f5a46;
+  --manteiga: #ffd877;       /* fundo de contato */
+
+  /* Papéis */
+  --fundo: var(--leite);
+  --texto: var(--ameixa);
+  --texto-suave: var(--ameixa-2);
+  --linha: rgb(59 31 58 / 0.16);
+  --foco: var(--morango-texto);
+
+  /* Tipografia */
+  --fonte-titulo: 'Lora', 'Georgia', serif;
+  --fonte-texto: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --t-hero: clamp(2.5rem, 1.4rem + 5.6vw, 5.25rem);
+  --t-h2: clamp(2rem, 1.3rem + 3.2vw, 3.5rem);
+  --t-h3: clamp(1.35rem, 1.1rem + 1vw, 1.85rem);
+  --t-grande: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);
+  --t-base: 1.0625rem;
+  --t-peq: 0.875rem;
+
+  /* Espaços e formas */
+  --max: 1200px;
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+  --secao-y: clamp(4.5rem, 3rem + 7vw, 8.5rem);
+  --raio: 14px;
+  --raio-g: 28px;
+  --arco: 999px 999px var(--raio) var(--raio);
+  --topo-h: 4.25rem;
+
+  --sombra: 0 18px 40px -24px rgb(59 31 58 / 0.45);
+  --ease: cubic-bezier(0.22, 0.8, 0.24, 1);
+}
