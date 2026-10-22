@@ -30,7 +30,7 @@ export function listarPendencias(cfg) {
         obj.titulo ||
         (obj.alt ? `Foto: ${obj.alt}` : '') ||
         (obj.texto ? `${obj.texto.slice(0, 70)}…` : caminho);
-      lista.push({ caminho, descricao, fonte: obj.fonte || '', valorAtual: typeof obj.valor === 'string' ? obj.valor : obj.url || '' });
+      lista.push({ caminho, descricao, fonte: obj.fonte || '', valorAtual: typeof obj.valor === 'string' ? obj.valor : obj.url || '', ficticio: obj.ficticio === true });
     }
     for (const [k, v] of Object.entries(obj)) {
       if (k === 'foto' || typeof v === 'object') visitar(v, caminho ? `${caminho}.${k}` : k);
@@ -49,14 +49,19 @@ if (executadoDireto) {
   const raiz = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
   const { default: cfg } = await import(pathToFileURL(path.join(raiz, 'src/config.js')).href);
   const lista = listarPendencias(cfg);
+  const ficticios = lista.filter((p) => p.ficticio);
+  const ocultos = lista.filter((p) => !p.ficticio);
   const grupos = new Map();
-  for (const p of lista) {
+  for (const p of ocultos) {
     const grupo = p.caminho.split(/[.[]/)[0];
     if (!grupos.has(grupo)) grupos.set(grupo, []);
     grupos.get(grupo).push(p);
   }
-  console.log(`\nVilla Fun Itu — ${lista.length} informações pendentes de confirmação`);
+  console.log(`\nVilla Fun Itu — ${lista.length} pendências`);
   console.log(`Modo atual em src/config.js: ${cfg.modo}\n`);
+  console.log(`▲ CONTEÚDO FICTÍCIO NO AR (${ficticios.length}) — aparece no site; substitua pelo real:`);
+  for (const p of ficticios) console.log(`  - ${p.descricao}\n      onde: ${p.caminho}`);
+  console.log(`\n▼ OCULTO NO MODO PÚBLICO (${ocultos.length}) — só aparece quando confirmado:\n`);
   for (const [grupo, itens] of grupos) {
     console.log(`■ ${grupo}`);
     for (const p of itens) {
@@ -65,5 +70,5 @@ if (executadoDireto) {
     }
     console.log('');
   }
-  console.log('Para confirmar um item: preencha o valor em src/config.js, marque confirmado: true e rode npm run build.\n');
+  console.log('Para confirmar um item: preencha o valor real em src/config.js, marque confirmado: true (e remova ficticio) e rode npm run build.\n');
 }

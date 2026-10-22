@@ -14,7 +14,8 @@
     "dev": "node scripts/build.mjs --watch & node scripts/serve.mjs",
     "serve": "node scripts/serve.mjs",
     "pendencias": "node scripts/pendencias.mjs",
-    "marca": "node scripts/gerar-marca.mjs"
+    "marca": "node scripts/gerar-marca.mjs",
+    "ilustracoes": "node scripts/gerar-ilustracoes.mjs"
   },
   "optionalDependencies": {
     "esbuild": "^0.25.0",

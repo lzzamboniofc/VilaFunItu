@@ -21,6 +21,7 @@ scripts/
   pendencias.mjs       ← lista o que falta confirmar
   serve.mjs            ← servidor local que simula o GitHub Pages
   gerar-marca.mjs      ← regera favicon e imagem de compartilhamento
+  gerar-ilustracoes.mjs← gera as ilustrações fictícias usadas no lugar das fotos
 index.html, 404.html, privacidade.html, assets/, sitemap.xml, robots.txt, .nojekyll  ← gerados pelo build
 ```
 
@@ -32,7 +33,8 @@ npm run dev            # build + servidor em http://localhost:4173/VilaFunItu/ c
 npm run build          # gera o site no modo definido em src/config.js
 npm run build:publico  # força o modo público
 npm run build:demo     # força o modo demonstração
-npm run pendencias     # lista todas as informações ainda não confirmadas
+npm run pendencias     # lista o conteúdo fictício no ar e o que está oculto até ser confirmado
+npm run ilustracoes    # regera as ilustrações fictícias (src/images/ilustracao-*.jpg)
 ```
 
 Depois do build, faça commit e push dos arquivos gerados para o GitHub Pages atualizar.
@@ -43,6 +45,14 @@ Em `src/config.js`, `modo: 'demonstracao'` ou `modo: 'publico'`.
 
 - **Demonstração** (apresentação comercial): mostra itens pendentes com o selo “A confirmar” e espaços reservados neutros no lugar das fotos. A página fica com `noindex` para não ser indexada pelo Google enquanto não for o site final.
 - **Público**: oculta tudo o que não tem `confirmado: true`, esconde seções sem conteúdo (o menu se ajusta sozinho) e libera a indexação.
+
+## Conteúdo fictício (estado atual)
+
+O site está no **modo público**, sem selos “A confirmar”. Para a apresentação, os textos ainda não confirmados foram preenchidos com **textos fictícios** coerentes com a proposta do Villa Fun, e os espaços de foto usam **ilustrações fictícias** geradas por `npm run ilustracoes`.
+
+Esses itens estão marcados com `ficticio: true` em `src/config.js` e aparecem no topo do relatório `npm run pendencias`. Antes de entregar o site como oficial, troque cada um pelo conteúdo real e marque `confirmado: true`.
+
+Dados de contato não confirmados (telefone, WhatsApp, e-mail, endereço, horários) **não** foram inventados: ficam ocultos até serem confirmados. Avaliações e equipe também seguem ocultas — nunca use depoimentos ou pessoas fictícias.
 
 ## Atualizar conteúdo
 

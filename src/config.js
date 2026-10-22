@@ -8,6 +8,9 @@
  *  - `confirmado: true`  → informação verificada com o Villa Fun (aparece no modo público).
  *  - `confirmado: false` → pendente. No modo demonstração aparece com o selo
  *                          "A confirmar"; no modo público fica oculta.
+ *  - `ficticio: true`    → conteúdo FICTÍCIO de demonstração (textos e ilustrações).
+ *                          Aparece normalmente no site, sem selo. Substitua pelo
+ *                          conteúdo real e marque `confirmado: true`.
  *  - `fonte`             → de onde a informação veio (só para controle interno).
  *
  *  Depois de editar, rode `npm run build` (ou `npm run dev`).
@@ -17,7 +20,7 @@
 
 export default {
   /** 'demonstracao' (apresentação comercial) ou 'publico' (site final). */
-  modo: 'demonstracao',
+  modo: 'publico',
 
   site: {
     /** Endereço final do site, com barra no fim. */
@@ -104,13 +107,13 @@ export default {
    * ------------------------------------------------------------ */
   fotos: {
     hero: [
-      { arquivo: '', alt: 'Ambiente do Villa Fun preparado para uma festa', confirmado: false, fonte: 'Foto pendente' },
-      { arquivo: '', alt: 'Mesa posta com a gastronomia do Villa Fun', confirmado: false, fonte: 'Foto pendente' },
-      { arquivo: '', alt: 'Detalhe de decoração de festa no Villa Fun', confirmado: false, fonte: 'Foto pendente' },
+      { arquivo: 'ilustracao-mesa.jpg', alt: 'Ilustração de mesa de festa com bolo, docinhos e balões', confirmado: false, ficticio: true, fonte: 'Ilustração fictícia — substituir por foto real' },
+      { arquivo: 'ilustracao-bolo.jpg', alt: 'Ilustração de bolo de aniversário com velas acesas', confirmado: false, ficticio: true, fonte: 'Ilustração fictícia — substituir por foto real' },
+      { arquivo: 'ilustracao-baloes.jpg', alt: 'Ilustração de buquê de balões coloridos', confirmado: false, ficticio: true, fonte: 'Ilustração fictícia — substituir por foto real' },
     ],
     sobre: [
-      { arquivo: '', alt: 'Espaço do Villa Fun Itu', confirmado: false, fonte: 'Foto pendente' },
-      { arquivo: '', alt: 'Convidados reunidos em festa no Villa Fun', confirmado: false, fonte: 'Foto pendente' },
+      { arquivo: 'ilustracao-espaco.jpg', alt: 'Ilustração do salão com janela em arco e mesa posta', confirmado: false, ficticio: true, fonte: 'Ilustração fictícia — substituir por foto real' },
+      { arquivo: 'ilustracao-brigadeiros.jpg', alt: 'Ilustração de brigadeiros em forminhas coloridas', confirmado: false, ficticio: true, fonte: 'Ilustração fictícia — substituir por foto real' },
     ],
     compartilhamento: { arquivo: '', confirmado: false, fonte: 'Gerada automaticamente até haver foto real' },
   },
@@ -142,9 +145,10 @@ export default {
       },
       {
         texto:
-          'Espaço reservado para a história do Villa Fun: quem está à frente, como o espaço nasceu e como cada festa é preparada.',
+          'Cada festa é preparada com calma, do primeiro contato ao último docinho. A ideia é que a família chegue, receba os convidados e aproveite o dia sem se preocupar com os detalhes.',
         confirmado: false,
-        fonte: 'História e equipe não localizadas',
+        ficticio: true,
+        fonte: 'Texto fictício — substituir pela história real do Villa Fun',
       },
     ],
   },
@@ -157,7 +161,7 @@ export default {
         titulo: 'Perto de quem importa',
         texto:
           'Com menos convidados, a festa acontece de perto: dá para conversar, acompanhar a criança e aproveitar cada momento sem correria.',
-        foto: { arquivo: '', alt: 'Família e amigos reunidos em festa no Villa Fun', confirmado: false, fonte: 'Foto pendente' },
+        foto: { arquivo: 'ilustracao-chapeus.jpg', alt: 'Ilustração de chapéus de festa e confetes', confirmado: false, ficticio: true, fonte: 'Ilustração fictícia — substituir por foto real' },
         confirmado: true,
         fonte: 'Conceito de festa intimista (bio do Instagram)',
       },
@@ -165,7 +169,7 @@ export default {
         titulo: 'Comida com memória',
         texto:
           'Na gastronomia afetiva, a comida não é um detalhe: é parte da lembrança que a família leva da festa.',
-        foto: { arquivo: '', alt: 'Comida servida em festa no Villa Fun', confirmado: false, fonte: 'Foto pendente' },
+        foto: { arquivo: 'ilustracao-salgados.jpg', alt: 'Ilustração de travessa com coxinhas e pastéis', confirmado: false, ficticio: true, fonte: 'Ilustração fictícia — substituir por foto real' },
         confirmado: true,
         fonte: 'Conceito de gastronomia afetiva (bio do Instagram)',
       },
@@ -187,27 +191,30 @@ export default {
       },
       {
         nome: 'Cardápio de gastronomia afetiva',
-        descricao: 'Opções de cardápio, salgados, pratos e doces servidos na festa.',
+        descricao: 'Salgados feitos na hora, pratos com gosto de casa e uma mesa de doces caprichada — comida para lembrar da festa.',
         preco: '',
         duracao: '',
         confirmado: false,
-        fonte: 'Itens do cardápio não confirmados',
+        ficticio: true,
+        fonte: 'Texto fictício — confirmar com o Villa Fun',
       },
       {
         nome: 'Decoração',
-        descricao: 'Opções de decoração e temas disponíveis para a festa.',
+        descricao: 'Mesa decorada de acordo com o tema escolhido pela família, com atenção aos detalhes e às cores da festa.',
         preco: '',
         duracao: '',
         confirmado: false,
-        fonte: 'Não confirmado',
+        ficticio: true,
+        fonte: 'Texto fictício — confirmar com o Villa Fun',
       },
       {
         nome: 'Recreação',
-        descricao: 'Atividades e acompanhamento para as crianças durante a festa.',
+        descricao: 'Brincadeiras e acompanhamento para as crianças, enquanto os adultos aproveitam a festa por perto.',
         preco: '',
         duracao: '',
         confirmado: false,
-        fonte: 'Não confirmado',
+        ficticio: true,
+        fonte: 'Texto fictício — confirmar com o Villa Fun',
       },
     ],
   },
@@ -224,15 +231,17 @@ export default {
       },
       {
         titulo: 'Receba as opções',
-        texto: 'O Villa Fun apresenta disponibilidade, pacotes e cardápio.',
+        texto: 'O Villa Fun responde com a disponibilidade e as opções de cardápio e decoração.',
         confirmado: false,
-        fonte: 'Processo comercial não confirmado',
+        ficticio: true,
+        fonte: 'Texto fictício — confirmar com o Villa Fun',
       },
       {
         titulo: 'Garanta a data',
-        texto: 'Combine os detalhes e confirme a reserva.',
+        texto: 'Combine os detalhes da festa e confirme a reserva da data.',
         confirmado: false,
-        fonte: 'Processo comercial não confirmado',
+        ficticio: true,
+        fonte: 'Texto fictício — confirmar com o Villa Fun',
       },
     ],
   },
@@ -240,14 +249,14 @@ export default {
   /** Galeria: adicione quantas fotos quiser. */
   galeria: {
     titulo: 'Festas no Villa Fun',
-    texto: 'Momentos reais de festas no espaço.',
+    texto: 'Os detalhes que fazem o clima de uma festa intimista.',
     fotos: [
-      { arquivo: '', alt: 'Ambiente da festa', legenda: '', confirmado: false, fonte: 'Foto pendente' },
-      { arquivo: '', alt: 'Mesa de doces', legenda: '', confirmado: false, fonte: 'Foto pendente' },
-      { arquivo: '', alt: 'Comida servida na festa', legenda: '', confirmado: false, fonte: 'Foto pendente' },
-      { arquivo: '', alt: 'Detalhe da decoração', legenda: '', confirmado: false, fonte: 'Foto pendente' },
-      { arquivo: '', alt: 'Crianças na festa', legenda: '', confirmado: false, fonte: 'Foto pendente' },
-      { arquivo: '', alt: 'Bolo de aniversário', legenda: '', confirmado: false, fonte: 'Foto pendente' },
+      { arquivo: 'ilustracao-mesa.jpg', alt: 'Ilustração de mesa de festa com bolo e balões', legenda: 'Mesa do parabéns', confirmado: false, ficticio: true, fonte: 'Ilustração fictícia — substituir por foto real' },
+      { arquivo: 'ilustracao-brigadeiros.jpg', alt: 'Ilustração de brigadeiros em forminhas', legenda: 'Docinhos', confirmado: false, ficticio: true, fonte: 'Ilustração fictícia — substituir por foto real' },
+      { arquivo: 'ilustracao-espaco.jpg', alt: 'Ilustração do salão com mesa posta', legenda: 'O salão', confirmado: false, ficticio: true, fonte: 'Ilustração fictícia — substituir por foto real' },
+      { arquivo: 'ilustracao-salgados.jpg', alt: 'Ilustração de salgados servidos na festa', legenda: 'Salgados', confirmado: false, ficticio: true, fonte: 'Ilustração fictícia — substituir por foto real' },
+      { arquivo: 'ilustracao-presentes.jpg', alt: 'Ilustração de caixinhas de presente', legenda: 'Lembrancinhas', confirmado: false, ficticio: true, fonte: 'Ilustração fictícia — substituir por foto real' },
+      { arquivo: 'ilustracao-bolo.jpg', alt: 'Ilustração de bolo de aniversário', legenda: 'O bolo', confirmado: false, ficticio: true, fonte: 'Ilustração fictícia — substituir por foto real' },
     ],
   },
 
@@ -289,27 +298,31 @@ export default {
       },
       {
         pergunta: 'Quantos convidados o espaço comporta?',
-        resposta: 'Resposta a confirmar com o Villa Fun.',
+        resposta: 'O Villa Fun é pensado para festas com um grupo próximo de convidados. Conte quantas pessoas pretende chamar e indicamos o formato ideal.',
         confirmado: false,
-        fonte: 'Capacidade não confirmada',
+        ficticio: true,
+        fonte: 'Texto fictício — confirmar com o Villa Fun',
       },
       {
         pergunta: 'O que está incluído na festa?',
-        resposta: 'Resposta a confirmar com o Villa Fun.',
+        resposta: 'Cada festa é montada com a família: cardápio, decoração e recreação são definidos no orçamento, de acordo com a comemoração.',
         confirmado: false,
-        fonte: 'Pacotes não confirmados',
+        ficticio: true,
+        fonte: 'Texto fictício — confirmar com o Villa Fun',
       },
       {
         pergunta: 'Quais são as formas de pagamento?',
-        resposta: 'Resposta a confirmar com o Villa Fun.',
+        resposta: 'As condições de pagamento são apresentadas junto com o orçamento.',
         confirmado: false,
-        fonte: 'Não confirmado',
+        ficticio: true,
+        fonte: 'Texto fictício — confirmar com o Villa Fun',
       },
       {
         pergunta: 'Com quanta antecedência devo reservar?',
-        resposta: 'Resposta a confirmar com o Villa Fun.',
+        resposta: 'Quanto antes, melhor — principalmente para fins de semana. Envie a data desejada para consultar a disponibilidade.',
         confirmado: false,
-        fonte: 'Não confirmado',
+        ficticio: true,
+        fonte: 'Texto fictício — confirmar com o Villa Fun',
       },
     ],
   },

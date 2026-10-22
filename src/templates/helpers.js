@@ -12,13 +12,16 @@ export const esc = (s = '') =>
 export function createContext(cfg, { modo, imagens }) {
   const demo = modo === 'demonstracao';
 
-  /** Um item aparece se estiver confirmado ou se estivermos no modo demonstração. */
-  const visivel = (item) => !!item && (item.confirmado === true || demo);
+  /**
+   * Um item aparece se estiver confirmado, se for conteúdo fictício de demonstração
+   * (`ficticio: true`) ou se estivermos no modo demonstração.
+   */
+  const visivel = (item) => !!item && (item.confirmado === true || item.ficticio === true || demo);
   const filtrar = (lista = []) => lista.filter(visivel);
 
-  /** Selo discreto exibido apenas no modo demonstração em itens pendentes. */
+  /** Selo discreto exibido apenas no modo demonstração em itens pendentes (não fictícios). */
   const selo = (item) =>
-    demo && item && item.confirmado !== true
+    demo && item && item.confirmado !== true && item.ficticio !== true
       ? '<span class="selo" title="Informação pendente de confirmação">A confirmar</span>'
       : '';
 
