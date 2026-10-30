@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://lzzamboniofc.github.io/VilaFunItu/sitemap.xml
+# Meta noindex: prévia comercial não oficial.
