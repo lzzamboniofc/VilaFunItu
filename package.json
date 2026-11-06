@@ -17,7 +17,8 @@
     "serve": "node scripts/serve.mjs",
     "pendencias": "node scripts/pendencias.mjs",
     "marca": "node scripts/gerar-marca.mjs",
-    "ilustracoes": "node scripts/gerar-ilustracoes.mjs"
+    "ilustracoes": "node scripts/gerar-ilustracoes.mjs",
+    "auditar": "node scripts/auditar-previa.mjs"
   },
   "optionalDependencies": {
     "esbuild": "^0.25.0",

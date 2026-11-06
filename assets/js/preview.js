@@ -3,12 +3,20 @@ document.documentElement.classList.add("has-js");
 const menuButton=document.querySelector("[data-menu-button]");
 const siteNav=document.querySelector("[data-menu]");
 if(menuButton&&siteNav){
+  const updateMenuPosition=()=>{
+    const header=document.querySelector(".site-header");
+    if(header)document.documentElement.style.setProperty("--mobile-nav-top",`${Math.max(0,Math.round(header.getBoundingClientRect().bottom))}px`);
+  };
+  updateMenuPosition();
+  window.addEventListener("resize",updateMenuPosition,{passive:true});
+  window.addEventListener("scroll",updateMenuPosition,{passive:true});
   function closeMenu(){
     document.documentElement.classList.remove("menu-open");
     menuButton.setAttribute("aria-expanded","false");
     menuButton.setAttribute("aria-label","Abrir menu");
   }
   menuButton.addEventListener("click",()=>{
+    updateMenuPosition();
     const open=!document.documentElement.classList.contains("menu-open");
     document.documentElement.classList.toggle("menu-open",open);
     menuButton.setAttribute("aria-expanded",String(open));
